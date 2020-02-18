@@ -107,6 +107,7 @@ export class DatePicker extends React.Component {
                 maximumDate={this.props.maximumDate}
                 mode="date"
                 locale={this.props.locale}
+                style={this.props.datePickerIosStyle}
                 timeZoneOffsetInMinutes={this.props.timeZoneOffsetInMinutes}
               />
             </Modal>

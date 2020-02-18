@@ -107,6 +107,7 @@ minimumDate:this.props.minimumDate,
 maximumDate:this.props.maximumDate,
 mode:"date",
 locale:this.props.locale,
+style:this.props.datePickerIosStyle,
 timeZoneOffsetInMinutes:this.props.timeZoneOffsetInMinutes,__source:{fileName:_jsxFileName,lineNumber:99}}))))));
 
 
