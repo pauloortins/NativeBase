@@ -4,9 +4,10 @@ import {
   View,
   Platform,
   DatePickerIOS,
-  DatePickerAndroid
+  DatePickerAndroid,
+  StyleSheet
 } from "react-native";
-import { Text } from "native-base";
+import { Text, Button } from "native-base";
 import variable from "../theme/variables/platform";
 
 export class DatePicker extends React.Component {
@@ -94,8 +95,20 @@ export class DatePicker extends React.Component {
             >
               <Text
                 onPress={() => this.setState({ modalVisible: false })}
-                style={{ backgroundColor: variables.datePickerBg, flex: 1 }}
+                style={
+                  [{
+                    backgroundColor: variables.datePickerBg, 
+                    flex: 1 
+                  },
+                  this.props.overlayIosStyle]}
               />
+              <View style={[styles.modalBtnContainer, this.props.modelBtnContainerIosStyle]}>
+                <Button                                  
+                  style={this.props.modalButtonIosStyle}                  
+                  onPress={() => this.setState({ modalVisible: false })}>
+                  <Text style={this.props.modalButtonTextIosStyle}>{this.props.modalButtonTextIos}</Text>
+                </Button>
+              </View>
               <DatePickerIOS
                 date={
                   this.state.chosenDate
@@ -117,3 +130,14 @@ export class DatePicker extends React.Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  modalBtnContainer: {
+    width: '100%',
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    paddingHorizontal: 15,
+    marginTop: 0,    
+  }
+});

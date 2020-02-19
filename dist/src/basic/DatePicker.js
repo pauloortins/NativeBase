@@ -6,6 +6,7 @@ var _reactNative=require("react-native");
 
 
 
+
 var _nativeBase=require("native-base");
 var _platform=require("../theme/variables/platform");var _platform2=_interopRequireDefault(_platform);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var
 
@@ -66,13 +67,13 @@ var variables=this.context.theme?
 this.context.theme["@@shoutem.theme/themeStyle"].variables:
 _platform2.default;
 return(
-_react2.default.createElement(_reactNative.View,{__source:{fileName:_jsxFileName,lineNumber:69}},
 _react2.default.createElement(_reactNative.View,{__source:{fileName:_jsxFileName,lineNumber:70}},
+_react2.default.createElement(_reactNative.View,{__source:{fileName:_jsxFileName,lineNumber:71}},
 _react2.default.createElement(_nativeBase.Text,{
 onPress:this.showDatePicker.bind(this),
 style:[
 {padding:10,color:variables.datePickerTextColor},
-this.state.chosenDate?this.props.textStyle:this.props.placeHolderTextStyle],__source:{fileName:_jsxFileName,lineNumber:71}},
+this.state.chosenDate?this.props.textStyle:this.props.placeHolderTextStyle],__source:{fileName:_jsxFileName,lineNumber:72}},
 
 
 this.state.chosenDate?
@@ -85,16 +86,28 @@ this.props.placeHolderText?
 this.props.placeHolderText:
 "Select Date"),
 
-_react2.default.createElement(_reactNative.View,{__source:{fileName:_jsxFileName,lineNumber:88}},
+_react2.default.createElement(_reactNative.View,{__source:{fileName:_jsxFileName,lineNumber:89}},
 _react2.default.createElement(_reactNative.Modal,{
 animationType:this.props.animationType,
 transparent:this.props.modalTransparent,
 visible:this.state.modalVisible,
-onRequestClose:function onRequestClose(){},__source:{fileName:_jsxFileName,lineNumber:89}},
+onRequestClose:function onRequestClose(){},__source:{fileName:_jsxFileName,lineNumber:90}},
 
 _react2.default.createElement(_nativeBase.Text,{
 onPress:function onPress(){return _this2.setState({modalVisible:false});},
-style:{backgroundColor:variables.datePickerBg,flex:1},__source:{fileName:_jsxFileName,lineNumber:95}}),
+style:
+[{
+backgroundColor:variables.datePickerBg,
+flex:1},
+
+this.props.overlayIosStyle],__source:{fileName:_jsxFileName,lineNumber:96}}),
+
+_react2.default.createElement(_reactNative.View,{style:[styles.modalBtnContainer,this.props.modelBtnContainerIosStyle],__source:{fileName:_jsxFileName,lineNumber:105}},
+_react2.default.createElement(_nativeBase.Button,{
+style:this.props.modalButtonIosStyle,
+onPress:function onPress(){return _this2.setState({modalVisible:false});},__source:{fileName:_jsxFileName,lineNumber:106}},
+_react2.default.createElement(_nativeBase.Text,{style:this.props.modalButtonTextIosStyle,__source:{fileName:_jsxFileName,lineNumber:109}},this.props.modalButtonTextIos))),
+
 
 _react2.default.createElement(_reactNative.DatePickerIOS,{
 date:
@@ -108,7 +121,7 @@ maximumDate:this.props.maximumDate,
 mode:"date",
 locale:this.props.locale,
 style:this.props.datePickerIosStyle,
-timeZoneOffsetInMinutes:this.props.timeZoneOffsetInMinutes,__source:{fileName:_jsxFileName,lineNumber:99}}))))));
+timeZoneOffsetInMinutes:this.props.timeZoneOffsetInMinutes,__source:{fileName:_jsxFileName,lineNumber:112}}))))));
 
 
 
@@ -116,4 +129,14 @@ timeZoneOffsetInMinutes:this.props.timeZoneOffsetInMinutes,__source:{fileName:_j
 
 
 }}]);return DatePicker;}(_react2.default.Component);
+
+
+var styles=_reactNative.StyleSheet.create({
+modalBtnContainer:{
+width:'100%',
+alignItems:'center',
+flexDirection:'row',
+justifyContent:'flex-end',
+paddingHorizontal:15,
+marginTop:0}});
 //# sourceMappingURL=DatePicker.js.map
