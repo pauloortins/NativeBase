@@ -4,13 +4,15 @@ import {
   View,
   Platform,
   DatePickerIOS,
-  DatePickerAndroid
+  DatePickerAndroid,
+  StyleSheet
 } from 'react-native';
 
 import variable from '../theme/variables/platform';
 import { PLATFORM } from '../theme/variables/commonColor';
 
 import { Text } from './Text';
+import { Button } from './Button';
 
 export class DatePicker extends React.Component {
   static defaultProps = {
@@ -116,11 +118,20 @@ export class DatePicker extends React.Component {
             >
               <Text
                 onPress={() => this.setState({ modalVisible: false })}
-                style={{
-                  backgroundColor: variables.datePickerBg,
-                  flex: variables.datePickerFlex
-                }}
+                style={
+                  [{
+                    backgroundColor: variables.datePickerBg, 
+                    flex: 1 
+                  },
+                  this.props.overlayIosStyle]}
               />
+              <View style={[styles.modalBtnContainer, this.props.modelBtnContainerIosStyle]}>
+                <Button                                  
+                  style={this.props.modalButtonIosStyle}                  
+                  onPress={() => this.setState({ modalVisible: false })}>
+                  <Text style={this.props.modalButtonTextIosStyle}>{this.props.modalButtonTextIos}</Text>
+                </Button>
+              </View>
               <DatePickerIOS
                 date={
                   this.state.chosenDate
@@ -132,6 +143,7 @@ export class DatePicker extends React.Component {
                 maximumDate={maximumDate}
                 mode="date"
                 locale={locale}
+                style={this.props.datePickerIosStyle}
                 timeZoneOffsetInMinutes={timeZoneOffsetInMinutes}
               />
             </Modal>
@@ -141,3 +153,14 @@ export class DatePicker extends React.Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  modalBtnContainer: {
+    width: '100%',
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    paddingHorizontal: 15,
+    marginTop: 0,    
+  }
+});
